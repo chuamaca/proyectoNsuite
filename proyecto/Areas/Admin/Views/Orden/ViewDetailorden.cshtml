@@ -1,0 +1,29 @@
+﻿@model Model.Orden
+@{
+    ViewBag.Title = "ViewDetailorden";
+}
+
+<h2>ViewDetailorden</h2>
+
+<ol class="breadcrumb">
+    <li><a href="~/admin/orden/index">Orden</a></li>
+    <li class="active"> @(Model.empresaorden + " " + Model.clienteorden) </li>
+</ol>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Información Orden</div>
+    <div class="uk-panel-box-primary">
+        <dl class="dl-horizontal">
+            <dt>Codigo:</dt>
+            <dd>@Model.codigoorden</dd>
+            <dt>OS:</dt>
+            <dd>@Model.ordenservicio</dd>
+            <dt>Usuario Final:</dt>
+            <dd>@Model.equipousuarioorden</dd>
+            <dt>Estado:</dt>
+            <dd>@Model.estadoorden </dd>
+            <dt>Fecha entrega:</dt>
+            <dd>@Model.fentregaorden</dd>
+        </dl>
+    </div>
+</div>

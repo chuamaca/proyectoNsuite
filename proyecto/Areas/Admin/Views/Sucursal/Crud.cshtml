@@ -1,0 +1,185 @@
+﻿@model Sucursal
+@{
+    ViewBag.Title = "Crud";
+
+    List<Empresa> misempresas = ViewBag.miempresa;
+}
+
+<div class="uk-container uk-container-center" id="epn_container">
+    <div class="menu__top">
+        <ul id="my-id" class="uk-switcher">
+            <li aria-hidden="false" class="uk-active" style="animation-duration: 200ms;">
+                <div class="uk-btn-group">
+
+
+                    <a href="~/admin/sucursal/Crud" id="btn_guardar">
+
+                        <i class="uk-icon-large uk-icon-file-o">
+                        </i><br>Nuevo
+                    </a>
+
+                    <a href="~/admin/sucursal/index" id="btn_guardar">
+                        <i class="uk-icon-large uk-icon-ban">
+                        </i><br>Cancelar
+                    </a>
+
+                    <a href="~/admin/sucursal/index" id="tablaDetalle">
+                        <i class="uk-icon-large uk-icon-list-ul">
+                        </i><br>
+                        Listado
+                    </a>
+
+                    <a href="#" id="btn_imprimir">
+                        <i class="uk-icon-large uk-icon-print">
+                        </i><br>Imprimir
+                    </a>
+                </div>
+            </li>
+            <li aria-hidden="false" class="" style="animation-duration: 200ms;">
+                <div class="uk-btn-group">
+                    <a href="#" id="btn_imprimir_pos">
+                        <i class="uk-icon-large uk-icon-print">
+                        </i><br>
+                        POS
+                    </a>
+                    <a href="#" id="btn_imprimir_media_carta">
+                        <i class="uk-icon-large uk-icon-print">
+                        </i><br>
+                        Med. Cart
+                    </a>
+                    <a href="#" id="btn_imprimir_carta">
+                        <i class="uk-icon-large uk-icon-print">
+                        </i><br>
+                        Carta
+                    </a>
+                </div>
+            </li>
+            <li aria-hidden="true" class="" style="animation-duration: 200ms;">
+                <div class="uk-btn-group">
+                    <a href="#" id="btn_resumen">
+                        <i class="uk-icon-large uk-icon-bar-chart">
+                        </i><br>
+                        Resumen
+                    </a>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+
+</div>
+
+
+
+@using (Html.BeginForm("guardar", "sucursal", FormMethod.Post))
+{
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div class="well">
+                <div id="yo" class="page">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Información de Sucursales</a></li>
+                        @*<li role="presentation" class="active">  </li>*@
+
+                    </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" style="scrollbar-base-color:ButtonHighlight aliceblue;" id="info">
+
+                            <div class="form-horizontal">
+                                <p></p>
+                                <fieldset>
+
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label" for="textNombres">Empresa</label>
+                                        <div class="col-md-3">
+                                            <select class="input-12" name="empresa_id">
+                                                @foreach (var c in misempresas)
+                                                {
+                                                    <option @(Model.empresa_id == (c.idempresa) ? "selected" : "") value="@c.idempresa">@c.nmempresa</option>
+                                                }
+                                            </select>
+                                        </div>
+
+                                        @Html.LabelFor(x => x.codigosuc, new { @class = "col-sm-2 control-label pull-left" })
+                                        <div class="col-md-3">
+                                            @Html.TextBoxFor(x => x.codigosuc, new { @class = "input-12", placeholder = "Razon Social" })
+                                            @Html.ValidationMessageFor(x => x.codigosuc, null, new { @class = "label label-danger" })
+                                        </div>
+
+                               
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        @Html.HiddenFor(x => x.idsucursal)
+                                        @Html.LabelFor(x => x.nmsucursal, new { @class = "col-sm-2 control-label pull-left" })
+                                        <div class="col-md-3">
+                                            @Html.TextBoxFor(x => x.nmsucursal, new { @class = "input-12", placeholder = "Razon Social" })
+                                            @Html.ValidationMessageFor(x => x.nmsucursal, null, new { @class = "label label-danger" })
+                                        </div>
+
+                                        @Html.LabelFor(x => x.telefonosuc, new { @class = "col-sm-1 control-label pull-left" })
+                                        <div class="col-md-3">
+                                            @Html.TextBoxFor(x => x.telefonosuc, new { @class = "input-12", placeholder = "RUC" })
+                                            @Html.ValidationMessageFor(x => x.telefonosuc, null, new { @class = "label label-danger" })
+                                        </div>
+
+
+                                        <div class="col-md-2">
+                                            <select name="estadosuc" class="input-12">
+                                                <option @(Model.estadosuc == 0 ? "selected" : "") value="0"> No Activo </option>
+                                                <option @(Model.estadosuc == 1 ? "selected" : "") value="1"> Activo </option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(x => x.direccionsuc, new { @class = "col-sm-2 control-label pull-left" })
+                                        <div class="col-md-8">
+                                            @Html.TextBoxFor(x => x.direccionsuc, new { @class = "input-12", placeholder = "Dirección" })
+                                            @Html.ValidationMessageFor(x => x.direccionsuc, null, new { @class = "label label-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(x => x.otroscu, new { @class = "col-sm-2 control-label pull-left" })
+                                        <div class="col-md-4">
+                                            @Html.TextBoxFor(x => x.otroscu, new { @class = "input-12", placeholder = "Correo" })
+                                            @Html.ValidationMessageFor(x => x.otroscu, null, new { @class = "label label-danger" })
+                                        </div>
+
+                                        @Html.LabelFor(x => x.telefonosuc, new { @class = "col-sm-1 control-label pull-left" })
+                                        <div class="col-md-3">
+                                            @Html.TextBoxFor(x => x.telefonosuc, new { @class = "input-12", placeholder = "Telefono" })
+                                            @Html.ValidationMessageFor(x => x.telefonosuc, null, new { @class = "label label-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(x => x.observacionsuc, new { @class = "col-sm-2 control-label pull-left" })
+                                        <div class="col-md-6">
+                                            @Html.TextAreaFor(x => x.observacionsuc, new { @class = "input-12", placeholder = "Ingrese su nombre" })
+                                            @Html.ValidationMessageFor(x => x.observacionsuc, null, new { @class = "label label-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-right well well-sm">
+                    <button type="submit" data-ajax="true" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+

@@ -1,0 +1,178 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="uk-container uk-container-center" id="epn_container">
+    <div class="menu__top">
+        <ul id="my-id" class="uk-switcher">
+            <li aria-hidden="false" class="uk-active" style="animation-duration: 200ms;">
+                <div class="uk-btn-group">
+                
+
+                    <a href="~/admin/orden/crud" id="btn_guardar">
+
+                        <i class="uk-icon-large uk-icon-file-o">
+                        </i><br>Nuevo
+                    </a>
+
+                    <a href="~/admin/orden/index" id="btn_guardar">
+                        <i class="uk-icon-large uk-icon-ban">
+                        </i><br>Cancelar
+                    </a>
+                 
+                    <a href="~/admin/orden/index" data-toggle="modal" data-target="#ModalFacturas">
+                        <i class="uk-icon-large uk-icon-list-ul">
+                        </i><br>
+                        Listado
+                    </a>
+
+                    <a href="#" id="btn_imprimir">
+                        <i class="uk-icon-large uk-icon-print">
+                        </i><br>Imprimir
+                    </a>
+                </div>
+            </li>
+            <li aria-hidden="true" class="" style="animation-duration: 200ms;">
+                <div class="uk-btn-group">
+                    <a href="#" id="btn_imprimir_pos">
+                        <i class="uk-icon-large uk-icon-print">
+                        </i><br>
+                        POS
+                    </a>
+                    <a href="#" id="btn_imprimir_media_carta">
+                        <i class="uk-icon-large uk-icon-print">
+                        </i><br>
+                        Med. Cart
+                    </a>
+                    <a href="#" id="btn_imprimir_carta">
+                        <i class="uk-icon-large uk-icon-print">
+                        </i><br>
+                        Carta
+                    </a>
+                </div>
+            </li>
+            <li aria-hidden="true" class="" style="animation-duration: 200ms;">
+                <div class="uk-btn-group">
+                    <a href="#" id="btn_resumen">
+                        <i class="uk-icon-large uk-icon-bar-chart">
+                        </i><br>
+                        Resumen
+                    </a>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+
+</div>
+
+
+
+
+
+            <div id="listorden" class="well">
+
+
+            </div>
+
+    
+  
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+
+        $("#listorden").anexGrid({
+            columnas: [
+                 { leyenda: 'ORDEN', columna: 'codigoorden', ordenable: true },
+                { leyenda: 'EMPRESA', columna: 'empresaorden', ordenable: true },
+                { leyenda: 'CLIENTE', columna: 'clienteorden', style: 'width:10px;', ordenable: true },
+                { leyenda: 'OS', columna: 'ordenservicio', style: 'width:140px;', ordenable: true },
+                { leyenda: 'PRODUCCION', columna: 'produccion', style: 'width:140px;', ordenable: true },
+                  { leyenda: 'ESTADO', columna: 'estadoorden', style: 'width:140px;', ordenable: true },
+                { style: 'width:10px;' },
+                { style: 'width:10px;' }
+            ],
+
+            modelo: [
+
+                {
+                    propiedad: 'codigoorden', formato: function (tr, obj, valor) {
+                        return anexGrid_link({
+                            href: '@Url.Content("~/admin/orden/crud/")' + obj.idorden,
+                            contenido: valor
+                        });
+                    }
+                },
+
+                {
+                    propiedad: 'empresaorden', formato: function (tr, obj, valor) {
+                        return anexGrid_link({
+                            href: '@Url.Content("~/admin/orden/crud/")' + obj.idorden,
+                            contenido: valor
+                        });
+                    }
+                },
+
+
+
+
+               { propiedad: 'clienteorden' },
+
+
+                { propiedad: 'ordenservicio' },
+                { propiedad: 'produccion' },
+
+                   { propiedad: 'estadoorden' },
+
+
+
+
+                // BOTONES
+                {
+                    formato: function (tr, obj, valor) {
+                        return anexGrid_link({
+                            href: '@Url.Content("~/admin/orden/ViewDetailorden/")' + obj.idorden,
+                            contenido: 'DETALLE',
+                            class: 'btn btn-success btn-xs'
+                        });
+                    },
+                },
+
+                 {
+                     formato: function (tr, obj, valor) {
+                         return anexGrid_link({
+                             href: '@Url.Content("~/admin/orden/formatos?idorden=")' + obj.idorden,
+                             contenido: 'ORDEN',
+                             class: 'btn btn-primary btn-xs'
+                         });
+                     },
+                 },
+
+                {
+                    formato: function (tr, obj, valor) {
+                        return anexGrid_link({
+                            href: '@Url.Content("~/admin/orden/eliminar/")' + obj.idorden,
+                            contenido: 'Eliminar',
+                            class: 'btn btn-danger btn-xs',
+                            attr: [
+                                'onclick="return confirm(\'¿Esta seguro de eliminar este registro?\')"'
+                            ]
+                        });
+                    },
+                }
+            ],
+
+            url: '@Url.Content("~/admin/orden/CargarOrden")',
+            paginable: true,
+            limite: [20, 60, 100],
+            columna: 'idorden',
+            columna_orden: 'DESC'
+        });
+    })
+</script>
+

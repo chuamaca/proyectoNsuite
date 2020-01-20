@@ -1,0 +1,580 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<script>
+
+
+    window.onload = function () {
+        var showData = $('#show-data');
+        $.getJSON('/default/GetRPT_Hardware_produccion', function (data) {
+
+           
+            $.each(data, function () {
+
+                var stringified = JSON.stringify(data);
+                var detail = JSON.parse(stringified);
+
+                //console.log(detail);
+
+                for (var i = 0; i < detail.length; i++) {
+
+                    $("#idprod").val(detail[i].hardwareprod);
+
+                 
+       
+                }
+
+            });
+
+        });
+    }
+
+</script>
+
+
+
+@*<script>
+
+   Window.onload = function () {
+      
+        var showData = $('#show-data');
+
+        $.getJSON('/default/GetRPT_Hardware_produccion', function (data) {
+                console.log(data);
+
+                var items = data.items.map(function (item) {
+                   // return item.key + ': ' + item.value;
+                    return item.hardwareprod;
+                });
+
+                showData.empty();
+
+                if (items.length) {
+                    var content = '<li>' + items.join('</li><li>') + '</li>';
+                    var list = $('<ul />').html(content);
+                    showData.append(list);
+                }
+            });
+
+            showData.text('Loading the JSON file.');
+    
+    };
+
+</script>*@
+
+
+
+
+@*<script>
+
+
+
+
+
+    $(document).ready(function () {
+        $("#hardwareselect").change(function () {
+            $("#busquedahw").empty();
+            //DESARROLLO
+            $.getJSON('/orden/GetHardwareDetail', { idhardware: $('#hardwareselect').val() }, function (data) {
+
+                // PRODUCCION:  $.getJSON('../GetHardwareDetail', { idhardware: $('#hardwareselect').val() }, function (data) {
+                $.each(data, function () {
+
+                    ////https://thisinterestsme.com/fix-unexpected-token-o-in-json/
+                    var stringified = JSON.stringify(data);
+                    var detail = JSON.parse(stringified);
+
+                    ////https://josehernandez.es/2010/10/02/uso-json-javascript.html
+
+                    for (var i = 0; i < detail.length; i++) {
+                        $("#busquedahw").val('Detalle: ' + detail[i].seriehw +
+                            '; ' + detail[i].nmmodel +
+                            '; ' + detail[i].nmprocessor +
+                            '; ' + detail[i].mcapacity +
+                            '; ' + detail[i].capacitystorage +
+                            '; ' + detail[i].nmequipo);
+
+
+                        $("#codigontb").val(detail[i].codigontb);
+                        $("#typedevice").val(detail[i].typedevice);
+ 
+                    }
+                });
+
+
+            });
+        });
+    });
+
+</script>*@
+
+<div class="well">
+
+    <div class="container-fluid active">
+
+        <div class="row">
+            <div class="col-lg-3 col-xs-6">
+           
+                <div class="small-box bg-aqua">
+                    <div class="inner">
+                    
+                    
+                        <h3 id="id="idprod"><sup style="font-size: 20px"></sup></h3>
+     
+
+                        <p>PRODUCCION</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>000
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+       
+            <div class="col-lg-3 col-xs-6">
+            
+                <div class="small-box bg-green">
+                    <div class="inner">
+                        <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+                        <p>Bounce Rate</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+       
+            <div class="col-lg-3 col-xs-6">
+      
+                <div class="small-box bg-yellow">
+                    <div class="inner">
+                        <h3>44</h3>
+
+                        <p>User Registrations</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person-add"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+     
+            <div class="col-lg-3 col-xs-6">
+              
+                <div class="small-box bg-red">
+                    <div class="inner">
+                        <h3>65</h3>
+
+                        <p>Unique Visitors</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-pie-graph"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+    
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <a href="compose.html" class="btn btn-primary btn-block margin-bottom">Compose</a>
+
+                <div class="box box-solid">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Folders</h3>
+
+                        <div class="box-tools">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body no-padding">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li class="active">
+                                <a href="#">
+                                    <i class="fa fa-inbox"></i> Inbox
+                                    <span class="label label-primary pull-right">12</span>
+                                </a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-envelope-o"></i> Sent</a></li>
+                            <li><a href="#"><i class="fa fa-file-text-o"></i> Drafts</a></li>
+                            <li>
+                                <a href="#"><i class="fa fa-filter"></i> Junk <span class="label label-warning pull-right">65</span></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-trash-o"></i> Trash</a></li>
+                        </ul>
+                    </div>
+           
+                </div>
+     
+                <div class="box box-solid">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Labels</h3>
+
+                        <div class="box-tools">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body no-padding">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#"><i class="fa fa-circle-o text-red"></i> Important</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Promotions</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> Social</a></li>
+                        </ul>
+                    </div>
+           
+                </div>
+
+            </div>
+
+            <div class="col-md-9">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">CALENDARIO DE ENTREGAS</h3>
+
+                        <div class="box-tools pull-right">
+                            <div class="has-feedback">
+                                <input type="text" class="form-control input-sm" placeholder="">
+                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                            </div>
+                        </div>
+    
+                    </div>
+             
+                    <div class="box-body no-padding">
+   
+                        <div class="table-responsive mailbox-messages">
+
+                            <div id="calender" class=""></div>
+
+
+                        </div>
+
+                    </div>
+
+             
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css" rel="stylesheet" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css" rel="stylesheet" media="print" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+        var events = [];
+        var selectedEvent = null;
+        FetchEventAndRenderCalendar();
+        function FetchEventAndRenderCalendar() {
+            events = [];
+            $.ajax({
+                type: "GET",
+                url: "../Default/GetEvents",
+            
+                success: function (data) {
+                    $.each(data, function (i, v) {
+                        events.push({
+                            eventID: v.EventID,
+                            title: v.Subject,
+                            description: v.Description,
+                            start: moment(v.Start),
+                            end: v.End != null ? moment(v.End) : null,
+                            color: v.ThemeColor,
+                            allDay: v.IsFullDay
+                        });
+                    })
+
+                    GenerateCalender(events);
+                },
+                error: function (error) {
+                    alert('failed');
+                }
+            })
+        }
+
+        function GenerateCalender(events) {
+            $('#calender').fullCalendar('destroy');
+            $('#calender').fullCalendar({
+                contentHeight: 400,
+                defaultDate: new Date(),
+                timeFormat: 'h(:mm)a',
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,basicWeek,basicDay,agenda'
+                },
+                eventLimit: true,
+                eventColor: '#378006',
+                events: events,
+                eventClick: function (calEvent, jsEvent, view) {
+                    selectedEvent = calEvent;
+                    $('#myModal #eventTitle').text(calEvent.title);
+                    var $description = $('<div/>');
+                    $description.append($('<p/>').html('<b>Start:</b>' + calEvent.start.format("DD-MMM-YYYY HH:mm a")));
+                    if (calEvent.end != null) {
+                        $description.append($('<p/>').html('<b>End:</b>' + calEvent.end.format("DD-MMM-YYYY HH:mm a")));
+                    }
+                    $description.append($('<p/>').html('<b>Description:</b>' + calEvent.description));
+                    $('#myModal #pDetails').empty().html($description);
+
+                    $('#myModal').modal();
+                },
+                selectable: true,
+                select: function (start, end) {
+                    selectedEvent = {
+                        eventID: 0,
+                        title: '',
+                        description: '',
+                        start: start,
+                        end: end,
+                        allDay: false,
+                        color: ''
+                    };
+                    openAddEditForm();
+                    $('#calendar').fullCalendar('unselect');
+                },
+                editable: true,
+                eventDrop: function (event) {
+                    var data = {
+                        EventID: event.eventID,
+                        Subject: event.title,
+                        Start: event.start.format('DD/MM/YYYY HH:mm A'),
+                        End: event.end != null ? event.end.format('DD/MM/YYYY HH:mm A') : null,
+                        Description: event.description,
+                        ThemeColor: event.color,
+                        IsFullDay: event.allDay
+                    };
+                    SaveEvent(data);
+                }
+            })
+        }
+
+        $('#btnEdit').click(function () {
+            //Open modal dialog for edit event
+            openAddEditForm();
+        })
+        $('#btnDelete').click(function () {
+            if (selectedEvent != null && confirm('Are you sure?')) {
+                $.ajax({
+                    type: "POST",
+                    url: '../Default/DeleteEvent',
+           
+                    data: { 'eventID': selectedEvent.eventID },
+                    success: function (data) {
+                        if (data.status) {
+                            //Refresh the calender
+                            FetchEventAndRenderCalendar();
+                            $('#myModal').modal('hide');
+                        }
+                    },
+                    error: function () {
+                        alert('Failed');
+                    }
+                })
+            }
+        })
+
+        $('#dtp1,#dtp2').datetimepicker({
+            format: 'DD/MM/YYYY HH:mm A'
+        });
+
+        $('#chkIsFullDay').change(function () {
+            if ($(this).is(':checked')) {
+                $('#divEndDate').hide();
+            }
+            else {
+                $('#divEndDate').show();
+            }
+        });
+
+        function openAddEditForm() {
+            if (selectedEvent != null) {
+                $('#hdEventID').val(selectedEvent.eventID);
+                $('#txtSubject').val(selectedEvent.title);
+                $('#txtStart').val(selectedEvent.start.format('DD/MM/YYYY HH:mm A'));
+                $('#chkIsFullDay').prop("checked", selectedEvent.allDay || false);
+                $('#chkIsFullDay').change();
+                $('#txtEnd').val(selectedEvent.end != null ? selectedEvent.end.format('DD/MM/YYYY HH:mm A') : '');
+                $('#txtDescription').val(selectedEvent.description);
+                $('#ddThemeColor').val(selectedEvent.color);
+            }
+            $('#myModal').modal('hide');
+            $('#myModalSave').modal();
+        }
+
+        $('#btnSave').click(function () {
+            //Validation/
+            if ($('#txtSubject').val().trim() == "") {
+                alert('Subject required');
+                return;
+            }
+            if ($('#txtStart').val().trim() == "") {
+                alert('Start date required');
+                return;
+            }
+            if ($('#chkIsFullDay').is(':checked') == false && $('#txtEnd').val().trim() == "") {
+                alert('End date required');
+                return;
+            }
+            else {
+                var startDate = moment($('#txtStart').val(), "DD/MM/YYYY HH:mm A").toDate();
+                var endDate = moment($('#txtEnd').val(), "DD/MM/YYYY HH:mm A").toDate();
+                if (startDate > endDate) {
+                    alert('Invalid end date');
+                    return;
+                }
+            }
+
+            var data = {
+                EventID: $('#hdEventID').val(),
+                Subject: $('#txtSubject').val().trim(),
+                Start: $('#txtStart').val().trim(),
+                End: $('#chkIsFullDay').is(':checked') ? null : $('#txtEnd').val().trim(),
+                Description: $('#txtDescription').val(),
+                ThemeColor: $('#ddThemeColor').val(),
+                IsFullDay: $('#chkIsFullDay').is(':checked')
+            }
+            SaveEvent(data);
+            // call function for submit data to the server
+        })
+
+        function SaveEvent(data) {
+            $.ajax({
+                type: "POST",
+                url: '../Default/SaveEvent',
+            
+                data: data,
+                success: function (data) {
+                    if (data.status) {
+                        //Refresh the calender
+                        FetchEventAndRenderCalendar();
+                        $('#myModalSave').modal('hide');
+                    }
+                },
+                error: function () {
+                    alert('Failed');
+                }
+            })
+        }
+    })
+</script>
+
+
+
+
+
+@*//modals para el calendario*@
+
+<div id="myModal" class="modal well" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><span id="eventTitle"></span></h4>
+            </div>
+            <div class="modal-body">
+                <button id="btnDelete" class="btn btn-default btn-sm pull-right">
+                    <span class="glyphicon glyphicon-remove"></span> Remove
+                </button>
+                <button id="btnEdit" class="btn btn-default btn-sm pull-right" style="margin-right:5px;">
+                    <span class="glyphicon glyphicon-pencil"></span> Edit
+                </button>
+                <p id="pDetails"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModalSave" class="modal" role="dialog">
+    <div class="modal-dialog">
+     
+        <div class="modal-content">
+            @*<div class="modal-header">*@
+            @*<button type="button" class="close" data-dismiss="modal">&times;</button>*@
+            @*<h4 class="modal-title">Save Event</h4>*@
+            @*</div>*@
+
+            <div class="modal-body">
+
+                <form class="col-md-12 form-horizontal well">
+                    <input type="hidden" id="hdEventID" value="0" />
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <input type="text" id="txtSubject" class="input-12" />
+                    </div>
+                    <div class="form-group">
+                        <label>Start</label>
+                        <div class="input-group date" id="dtp1">
+                            <input type="text" id="txtStart" class="input-12" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label><input type="checkbox" id="chkIsFullDay" checked="checked" />  Is Full Day event</label>
+                        </div>
+                    </div>
+                    <div class="form-group" id="divEndDate" style="display:none">
+                        <label>End</label>
+                        <div class="input-group date" id="dtp2">
+                            <input type="text" id="txtEnd" class="input-12" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="txtDescription" rows="3" class="input-12"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Theme Color</label>
+                        <select id="ddThemeColor" class="input-12">
+                            <option value="">Default</option>
+                            <option value="red">Red</option>
+                            <option value="blue">Blue</option>
+                            <option value="black">Black</option>
+                            <option value="green">Green</option>
+                        </select>
+                    </div>
+                    <button type="button" id="btnSave" class="btn btn-sm btn-success">Save</button>
+                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+  
+
+ 
+</div>
+

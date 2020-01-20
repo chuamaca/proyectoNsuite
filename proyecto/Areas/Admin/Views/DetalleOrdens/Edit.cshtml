@@ -1,0 +1,239 @@
+﻿@model Model.DetalleOrden
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+<ol class="breadcrumb">
+    <li><a href="~/admin/Orden/">Orden</a></li>
+    <li class="active"> Detalle de Orden </li>
+</ol>
+
+<script>
+
+    $(document).ready(function () {
+        $("#chkdwn2").click(function () {
+            if ($(this).is(":checked")) {
+                $("#Orden_Id").prop("disabled", true);
+            } else {
+                $("#Orden_Id").prop("disabled", false);
+            }
+        });
+    });
+
+</script>
+
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <div class="well">
+            <div id="yo" class="page">
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" style="scrollbar-base-color:ButtonHighlight aliceblue;" id="info">
+
+                                <div class="form-horizontal">
+
+                                    <fieldset>
+
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        @Html.HiddenFor(model => model.iddetalleorden)
+
+                                        <div class="form-group" >
+
+                                                @Html.LabelFor(model => model.Orden_Id, "PROCESO", htmlAttributes: new { @class = "col-sm-2 control-label pull-left" })
+                                                <div class="col-md-2">
+                                                    @Html.DropDownList("Orden_Id", null, htmlAttributes: new { @class = "input-12" })
+                                                    <input type="checkbox" id="chkdwn2" value="feedback" checked />
+                                                    @Html.ValidationMessageFor(model => model.Orden_Id, "", new { @class = "label label-danger" })
+                                                </div>
+                                                 
+
+                                                @Html.LabelFor(model => model.Hardware_Id, "EQUIPO", htmlAttributes: new { @class = "col-sm-2 control-label pull-left" })
+                                                <div class="col-md-2">
+                                                    @Html.DropDownList("Hardware_Id", null, htmlAttributes: new { @class = "input-12"})
+                                                    @Html.ValidationMessageFor(model => model.Hardware_Id, "", new { @class = "label label-danger" })
+                                                </div>
+
+                                                
+
+                                        </div>
+
+                                        <div class="form-group">
+                                                @Html.LabelFor(model => model.seriedt, htmlAttributes: new { @class = "col-sm-2 control-label pull-left" })
+                                                <div class="col-md-2">
+                                                    @Html.EditorFor(model => model.seriedt, new { htmlAttributes = new { @class = "input-12" } })
+                                                    @Html.ValidationMessageFor(model => model.seriedt, "", new { @class = "text-danger" })
+                                                </div>
+
+                                                @Html.LabelFor(model => model.usuariof, htmlAttributes: new { @class = "col-sm-2 control-label pull-left" })
+                                                <div class="col-md-2">
+                                                    @Html.EditorFor(model => model.usuariof, new { htmlAttributes = new { @class = "input-12" } })
+                                                    @Html.ValidationMessageFor(model => model.usuariof, "", new { @class = "text-danger" })
+                                                </div>
+
+                                                @Html.LabelFor(model => model.telefonof, htmlAttributes: new { @class = "col-sm-2 control-label pull-left" })
+                                                <div class="col-md-2">
+                                                    @Html.EditorFor(model => model.telefonof, new { htmlAttributes = new { @class = "input-12" } })
+                                                    @Html.ValidationMessageFor(model => model.telefonof, "", new { @class = "text-danger" })
+                                                </div>
+
+
+                                        </div>
+
+                                        <div class="form-group">
+                                                @Html.LabelFor(model => model.ubicacion, htmlAttributes: new { @class = "col-sm-2 control-label pull-left" })
+                                                <div class="col-md-2">
+                                                    @Html.EditorFor(model => model.ubicacion, new { htmlAttributes = new { @class = "input-12" } })
+                                                    @Html.ValidationMessageFor(model => model.ubicacion, "", new { @class = "text-danger" })
+                                                </div>
+
+                                                @Html.LabelFor(model => model.cableseg, htmlAttributes: new { @class = "col-sm-2 control-label pull-left" })
+                                                <div class="col-md-2">
+                                                    @Html.EditorFor(model => model.cableseg, new { htmlAttributes = new { @class = "input-12" } })
+                                                    @Html.ValidationMessageFor(model => model.cableseg, "", new { @class = "text-danger" })
+                                                </div>
+
+                                                @Html.LabelFor(model => model.mouse, htmlAttributes: new { @class = "col-sm-2 control-label pull-left" })
+                                                <div class="col-md-2">
+                                                    @Html.EditorFor(model => model.mouse, new { htmlAttributes = new { @class = "input-12" } })
+                                                    @Html.ValidationMessageFor(model => model.mouse, "", new { @class = "text-danger" })
+                                                </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.maleta, htmlAttributes: new { @class = "col-sm-2 control-label pull-left" })
+                                            <div class="col-md-2">
+                                                @Html.EditorFor(model => model.maleta, new { htmlAttributes = new { @class = "input-12" } })
+                                                @Html.ValidationMessageFor(model => model.maleta, "", new { @class = "text-danger" })
+                                            </div>
+
+                                            @Html.LabelFor(model => model.accesorio, htmlAttributes: new { @class = "col-sm-2 control-label pull-left" })
+                                            <div class="col-md-2">
+                                                @Html.EditorFor(model => model.accesorio, new { htmlAttributes = new { @class = "input-12" } })
+                                                @Html.ValidationMessageFor(model => model.accesorio, "", new { @class = "text-danger" })
+                                            </div>
+
+                                  
+                                        </div>
+
+                                       
+
+
+
+
+
+                                            <div class="form-group fc-color-picker" >
+
+
+                                                @Html.LabelFor(model => model.valor, htmlAttributes: new { @class = "col-sm-2 control-label pull-left" })
+                                                <div class="col-md-2">
+                                                    @Html.EditorFor(model => model.valor, new { htmlAttributes = new { @class = "input-12"  } })
+                                                    @Html.ValidationMessageFor(model => model.valor, "", new { @class = "text-danger" })
+                                                </div>
+
+                                                @Html.LabelFor(model => model.IGV, htmlAttributes: new { @class = "col-sm-2 control-label pull-left" })
+                                                <div class="col-md-2">
+                                                    @Html.EditorFor(model => model.IGV, new { htmlAttributes = new { @class = "input-12" , disabled = "disabled" } })
+                                                    @Html.ValidationMessageFor(model => model.IGV, "", new { @class = "text-danger" })
+                                                </div>
+
+                                                @Html.LabelFor(model => model.total, htmlAttributes: new { @class = "col-sm-2 control-label pull-left" })
+                                                <div class="col-md-2">
+                                                    @Html.EditorFor(model => model.total, new { htmlAttributes = new { @class = "input-12" , disabled = "disabled" } })
+                                                    @Html.ValidationMessageFor(model => model.total, "", new { @class = "text-danger" })
+                                                </div>
+
+                                            </div>
+
+                                            <div class="form-group">
+
+                                                @Html.LabelFor(model => model.obscambio, htmlAttributes: new { @class = "col-sm-2 control-label pull-left" })
+                                                <div class="col-md-2">
+                                                    @Html.EditorFor(model => model.obscambio, new { htmlAttributes = new { @class = "input-12" } })
+                                                    @Html.ValidationMessageFor(model => model.obscambio, "", new { @class = "text-danger" })
+                                                </div>
+
+                                                @Html.LabelFor(model => model.estadodetalleorden, htmlAttributes: new { @class = "col-sm-2 control-label pull-left" })
+                                                <div class="col-md-2">
+                                                    @*@Html.DropDownList("estadodetalleorden", null, htmlAttributes: new { @class = "input-12" })*@
+
+                                                    <select id="estadodetalleorden" name="estadodetalleorden" class="input-12">
+
+                                                        @if (Model.estadodetalleorden == 0)
+                                                        {
+                                                            <option value="0">SALIDA</option>
+                                                            <option value="1">PRODUCCION</option>
+                                                            <option value="2">CAMBIO</option>
+
+                                                        }
+                                                        else if (Model.estadodetalleorden == 1)
+                                                        {
+                                                            <option value="1">PRODUCCION</option>
+                                                            <option value="0">SALIDA</option>
+                                                            <option value="2">CAMBIO</option>
+                                                        }
+
+                                                        else if (Model.estadodetalleorden == 2)
+                                                        {
+                                                            <option value="1">PRODUCCION</option>
+                                                            <option value="0">SALIDA</option>
+                                                            <option value="2">CAMBIO</option>
+                                                        }
+                                                    </select>
+
+                                                    @*@Html.EditorFor(model => model.estadodetalleorden, new { htmlAttributes = new { @class = "input-12" } })
+                                                   @Html.ValidationMessageFor(model => model.estadodetalleorden, "", new { @class = "text-danger" })*@
+                                                </div>
+                                            </div>
+
+                                    </fieldset>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="text-right well well-sm">
+                            @*<button type="submit" data-ajax="true" class="btn btn-success">
+                                <span class="spinner-border spinner-border-sm mr-2"></span>
+                                Guardar
+                            </button>*@
+
+                            <div class="text-right well well-sm">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" data-ajax="true" value="Guardar" class="btn btn-success" />
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+</div>
+
+
+
+
+   
+ 
+
+
+
+}
+
+<div class="well">
+    @Html.ActionLink("Lista", "Index")
+</div>
