@@ -1,4 +1,4 @@
-ALTER procedure RPT_Nsuite_Gremision
+create procedure RPT_Nsuite_Gremision
 (
 @idorden int
 )

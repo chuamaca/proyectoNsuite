@@ -153,6 +153,16 @@
                      },
                  },
 
+                 {
+                     formato: function (tr, obj, valor) {
+                         return anexGrid_link({
+                             href: '@Url.Content("~/admin/orden/gremission?idorden=")' + obj.idorden,
+                             contenido: 'G. REM',
+                             class: 'btn btn-primary btn-xs'
+                         });
+                     },
+                 },
+
                 {
                     formato: function (tr, obj, valor) {
                         return anexGrid_link({

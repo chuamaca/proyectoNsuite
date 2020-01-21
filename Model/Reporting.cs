@@ -17,11 +17,6 @@ namespace Model
 
         public int hardwareprod { get; set; }
 
-
-
-
-
-
         public virtual List<Reporting> GetRPT_Hardware_produccion()
         {
             var ctx = new ProyectoContext();
