@@ -8,6 +8,8 @@ using Model;
 
 namespace proyecto.Areas.Admin.Filters
 {
+
+    [Autenticado]
     public class Cascada
     {
         private Empresa empresa = new Empresa();

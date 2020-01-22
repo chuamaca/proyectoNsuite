@@ -3,7 +3,7 @@
 
 @{
     Model.Usuario usuario = new Model.Usuario().ObtenerPerfil(Helper.SessionHelper.GetUser());
-    ViewBag.Title = "Crud";
+    ViewBag.Title = "Solicitud de Alquiler";
 
 
 }
@@ -333,15 +333,15 @@
                 <div class="stepwizard-row setup-panel">
                     <div class="stepwizard-step">
                         <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
-                        <p>Step 1</p>
+                        <p>PASO 1</p>
                     </div>
                     <div class="stepwizard-step">
                         <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
-                        <p>Step 2</p>
+                        <p>PASO 2</p>
                     </div>
                     <div class="stepwizard-step">
                         <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
-                        <p>Step 3</p>
+                        <p>PASO 3</p>
                     </div>
                 </div>
             </div>
@@ -393,6 +393,8 @@
                                 @Html.ValidationMessageFor(x => x.sucursalorden, null, new { @class = "label label-danger" })
                             </div>
 
+
+
                         </div>
 
 
@@ -417,6 +419,12 @@
                                 @Html.EditorFor(x => x.refacturableorden, new { htmlAttributes = new { @class = "input-12", placeholder = "SI REFACTURABLE/NO REFACTURABLE" } })
                                 @Html.ValidationMessageFor(x => x.refacturableorden, null, new { @class = "label label-danger" })
                             </div>
+                        </div>
+
+
+                        <div class="box-comment">
+
+                           **NOTA* Ingrese cuidadosamente los datos, Cualquier duda comuniquese con el Servicio de Renting
                         </div>
 
 
@@ -528,7 +536,7 @@
                         <div class="form-group">
                             @Html.LabelFor(x => x.hardwaredevice, new { @class = "col-sm-2 control-label pull-left" })
                             <div class="col-md-3">
-                                @Html.TextBoxFor(x => x.hardwaredevice, new { @class = "input-12", placeholder = "" })
+                                @Html.TextBoxFor(x => x.hardwaredevice, new { @class = "input-12", placeholder = "NOTEBOOK/DESKTOP/IMPRESORA" })
                                 @Html.ValidationMessageFor(x => x.hardwaredevice, null, new { @class = "label label-danger" })
                             </div>
                         </div>

@@ -7,9 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Model;
+using proyecto.Areas.Admin.Filters;
 
 namespace proyecto.Areas.Admin.Controllers
 {
+    [Autenticado]
     public class DetalleOrdensController : Controller
     {
         private ProyectoContext db = new ProyectoContext();

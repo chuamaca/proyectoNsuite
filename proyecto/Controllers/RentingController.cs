@@ -15,9 +15,6 @@ namespace proyecto.Controllers
     {
 
 
-
-
-
         private Orden orden = new Orden();
         private Empresa miempresalista = new Empresa();
         private Sucursal misucursal = new Sucursal();

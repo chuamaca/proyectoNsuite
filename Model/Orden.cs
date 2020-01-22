@@ -13,6 +13,7 @@
     using System.Linq;
     using System.Web;
 
+
     [Table("Orden")]
     public class Orden
     {
@@ -36,16 +37,21 @@
         [StringLength(50)]
         public string numeroorden { get; set; }
 
+        [Required]
         [DisplayName("Codigo Orden")]
         [StringLength(10)]
         public string codigoorden { get; set; }
 
+        [Required]
         [DisplayName("Empresa")]
         public string empresaorden { get; set; }
 
+        [Required]
         [DisplayName("Sucursal")]
         public string sucursalorden { get; set; }
 
+
+        [Required]
         [DisplayName("Cliente")]
         public string clienteorden { get; set; }
 
@@ -74,10 +80,13 @@
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/mm/yy}")]
         public string fentregaorden { get; set; }
 
+        [Required]
         [DisplayName("Responsable")]
         [StringLength(50)]
         public string responsableorden { get; set; }
 
+
+        [Required]
         [DisplayName("Telefono Responsable")]
         [StringLength(50)]
         public string telefonoresponsableorden { get; set; }
@@ -87,10 +96,14 @@
         [StringLength(50)]
         public string tipousuarioorden { get; set; }
 
+
+        [Required]
         [DisplayName("Usuario")]
         [StringLength(50)]
         public string equipousuarioorden { get; set; }
 
+
+        [Required]
         [DisplayName("Telefono")]
         [StringLength(50)]
         public string telefonousuarioorden { get; set; }
@@ -99,6 +112,8 @@
         [StringLength(50)]
         public string redequipoorden { get; set; }
 
+
+        [Required]
         [DisplayName("Ubicación")]
         [StringLength(50)]
         public string ubicacionequipoorden { get; set; }
@@ -156,17 +171,19 @@
         [DisplayName("Fecha Fin")]
         public string rentingfin { get; set; }
 
+
+        [Required]
         [DisplayName("Hardware")]
         [StringLength(50)]
         public string hardwaredevice { get; set; }
 
 
-
+        [Required]
         [DisplayName("Cantidad")]
         [StringLength(50)]
         public string cantidadhardware { get; set; }
 
-
+        [Required]
         [DisplayName("Tipo Hardware")]
         [StringLength(50)]
         public string tipohardware { get; set; }

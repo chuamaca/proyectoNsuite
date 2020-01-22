@@ -5,8 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using Model;
 
+using proyecto.Areas.Admin.Filters;
+
 namespace proyecto.Areas.Admin.Controllers
 {
+    [Autenticado]
     public class ClienteController : Controller
     {
         // GET: Admin/Cliente
