@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace proyecto.Areas.Admin.Controllers
 {
+  
     public class LoginController : Controller
     {
         private Usuario usuario = new Usuario();

@@ -40,7 +40,7 @@
         public string ubicacion { get; set; }
 
 
-        [DisplayName("CABLE DE SEGURIDAD")]
+        [DisplayName("CABLE")]
         public string cableseg { get; set; }
 
         [DisplayName("MOUSE")]
@@ -89,23 +89,51 @@
         [DisplayName("GUIA RECEPCION")]
         public string grecepcion { get; set; }
 
+
+        [DisplayName("CODIGO")]
         public string codigontb { get; set; }
+
+        [DisplayName("TIPO")]
         public string typedevice { get; set; }
+
+        [DisplayName("SERIE")]
         public string seriehw { get; set; }
+
+        [DisplayName("MARCA")]
         public string nmbrand { get; set; }
+
+        [DisplayName("MODELO")]
         public string nmmodel { get; set; }
+
+        [DisplayName("P/N")]
         public string partnumberhw { get; set; }
+
+        [DisplayName("BATERIA")]
         public string snbatery { get; set; }
+
+        [DisplayName("CARGADOR")]
         public string sncharger { get; set; }
+
+        [DisplayName("PROCESADOR")]
         public string nmprocessor { get; set; }
+
+        [DisplayName("GHZ")]
         public string ghzprocessor { get; set; }
+
+        [DisplayName("RAM")]
         public string mcapacity { get; set; }
+
+        [DisplayName("DISCO DURO")]
         public string capacitystorage { get; set; }
+
+        [DisplayName("LICENCIAS")]
         public string lic { get; set; }
+
+        [DisplayName("HOSTNAME")]
         public string nmequipo { get; set; }
+
+        [DisplayName("OBSERVACIONES")]
         public string obshw { get; set; }
-
-
 
 
         public virtual Hardware Hardware { get; set; }

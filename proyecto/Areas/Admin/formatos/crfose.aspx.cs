@@ -6,10 +6,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using proyecto.Areas.Admin.Filters;
 
 
 namespace proyecto.Areas.Admin.formatos
 {
+    [Autenticado]
     public partial class crfose : System.Web.UI.Page
     {
         rpt_fose formatofose = new rpt_fose();

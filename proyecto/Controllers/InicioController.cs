@@ -9,6 +9,7 @@ using proyecto.Areas.Admin.Filters;
 
 namespace proyecto.Controllers
 {
+    [Autenticado]
     public class InicioController : Controller
     {
         private Usuario usuario = new Usuario();

@@ -6,10 +6,12 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
-using System;
+
+using proyecto.Areas.Admin.Filters;
 
 namespace proyecto.Areas.Admin.formatos
 {
+    [Autenticado]
     public partial class crgremision : System.Web.UI.Page
     {
 

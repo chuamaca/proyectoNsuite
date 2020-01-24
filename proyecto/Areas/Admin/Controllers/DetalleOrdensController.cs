@@ -88,7 +88,7 @@ namespace proyecto.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "iddetalleorden,Orden_Id,Hardware_Id,seriedt,usuariof,telefonof,ubicacion,cableseg,mouse,maleta,accesorio,valor,IGV,total,obscambio,estadodetalleorden")] DetalleOrden detalleOrden)
+        public ActionResult Edit([Bind(Include = "iddetalleorden,Orden_Id,Hardware_Id,seriedt,usuariof,telefonof,ubicacion,cableseg,mouse,maleta,accesorio,valor,IGV,total,obscambio,estadodetalleorden,fregistro, gremision, grecepcion, codigontb, typedevice, seriehw, nmbrand, nmmodel, partnumberhw, snbatery, sncharger, nmprocessor, ghzprocessor, mcapacity, capacitystorage, lic, nmequipo, obshw")] DetalleOrden detalleOrden)
         {
             if (ModelState.IsValid)
             {
