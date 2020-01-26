@@ -672,9 +672,14 @@ PARA CARGAR INVENTARIO EN UN VISTA PARCIAL
                                     <div class="form-group">
                                         @Html.LabelFor(x => x.estadoorden, new { @class = "col-sm-2 control-label pull-left" })
                                         <div class="col-md-3">
-                                            @Html.TextBoxFor(x => x.estadoorden, new { @class = "input-12", placeholder = "" })
+                                            @Html.TextBoxFor(x => x.estadoorden, new { @class = "input-12" })
                                             @Html.ValidationMessageFor(x => x.estadoorden, null, new { @class = "label label-danger" })
                                         </div>
+
+
+
+
+
 
                                         <div class="col-md-2">
                                             <label>Adjunto</label>

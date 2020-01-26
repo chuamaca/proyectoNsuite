@@ -21,13 +21,24 @@ namespace proyecto.Controllers
         private Sucursal misucursal = new Sucursal();
         private DetalleOrden detalleorden = new DetalleOrden();
         private Hardware inventario = new Hardware();
+        private Reporting thisreport = new Reporting();
 
-       
 
-        public JsonResult CargarOrden(AnexGRID grid)
+        public JsonResult ListarOrdenPorEmpresa(AnexGRID grid, string empresafilter)
         {
-            return Json(orden.Listar(grid));
+            Usuario user = new Usuario();
+
+            var getemp = user.ObtenerPerfil(SessionHelper.GetUser());
+
+            var thisuser = getemp.razonsocial.ToString();
+
+            return Json(thisreport.ListarPorEmpresa(grid,thisuser));
         }
+
+
+
+
+
 
         public ActionResult Index()
         {
@@ -114,19 +125,30 @@ namespace proyecto.Controllers
 
 
         //PARA VISUALIZAR EQUIPOS EN PRODUCCION CAMBIOS ATENCIONES EN VISTA DEL CLIENTE
-        private Reporting thisreport = new Reporting();
+     
         public JsonResult GetRPT_Hardware_produccion_empresa( string empresa)
         {
             Usuario user = new Usuario();
 
             var getemp = user.ObtenerPerfil(SessionHelper.GetUser());
 
-         var thisuser =   getemp.razonsocial.ToString();
+            var thisuser =   getemp.razonsocial.ToString();
 
             var listaequiposproduccion = thisreport.GetRPT_Hardware_produccion_for_empresa(thisuser);
 
             return Json(listaequiposproduccion, JsonRequestBehavior.AllowGet);
 
+        }
+
+
+        public ActionResult ViewDetailorden(int id)
+        {
+
+            //PARA PODER TRAER EL LISTADO DE DETALLEORDEN DE ACUERDO AL ID DEL ORDEN
+
+            ViewBag.InventarioElegido = detalleorden.Listar(id);
+
+            return View(orden.ObtenerVerorden(id));
         }
     }
 }

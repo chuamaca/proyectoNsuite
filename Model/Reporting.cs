@@ -47,6 +47,93 @@ namespace Model
             return ctx.Database.SqlQuery<Reporting>("RPT_Hardware_produccion_for_empresa @empresa", param1).ToList();
         }
 
+        //PARA MOSTRAR EL LISTADO DE PROCESOS A LOS CLIENTES
+        public AnexGRIDResponde ListarPorEmpresa(AnexGRID grid , string empresafilter)
+        {
+            try
+            {
+                using (var ctx = new ProyectoContext())
+                {
+                    grid.Inicializar();
+
+                    var query = ctx.Orden.Where(x => x.idorden > 0)
+                                           .Where(x => x.empresaorden == empresafilter);
+
+                    // Ordenamiento
+                    if (grid.columna == "idorden")
+                    {
+                        query = grid.columna_orden == "DESC" ? query.OrderByDescending(x => x.idorden)
+                                                             : query.OrderBy(x => x.idorden);
+                    }
+
+
+                    if (grid.columna == "codigoorden")
+                    {
+                        query = grid.columna_orden == "DESC" ? query.OrderByDescending(x => x.codigoorden)
+                                                             : query.OrderBy(x => x.codigoorden);
+                    }
+
+                    if (grid.columna == "empresaorden")
+                    {
+                        query = grid.columna_orden == "DESC" ? query.OrderByDescending(x => x.empresaorden)
+                                                             : query.OrderBy(x => x.empresaorden);
+                    }
+                    if (grid.columna == "clienteorden")
+                    {
+                        query = grid.columna_orden == "DESC" ? query.OrderByDescending(x => x.clienteorden)
+                                                             : query.OrderBy(x => x.clienteorden);
+                    }
+
+                    if (grid.columna == "ordenservicio")
+                    {
+                        query = grid.columna_orden == "DESC" ? query.OrderByDescending(x => x.ordenservicio)
+                                                             : query.OrderBy(x => x.ordenservicio);
+                    }
+
+                    if (grid.columna == "produccion")
+                    {
+                        query = grid.columna_orden == "DESC" ? query.OrderByDescending(x => x.produccion)
+                                                             : query.OrderBy(x => x.produccion);
+                    }
+
+
+                    if (grid.columna == "estadoorden")
+                    {
+                        query = grid.columna_orden == "DESC" ? query.OrderByDescending(x => x.estadoorden)
+                                                             : query.OrderBy(x => x.estadoorden);
+                    }
+
+                    var orden = query.Skip(grid.pagina)
+                                       .Take(grid.limite)
+                                       .ToList();
+
+                    var total = query.Count();
+
+                    grid.SetData(
+                        from a in orden
+                        select new
+                        {
+                            a.idorden,
+                            a.codigoorden,
+                            a.empresaorden,
+                            a.clienteorden,
+                            a.ordenservicio,
+                            a.produccion,
+                            a.estadoorden
+                        },
+                        total
+                    );
+                }
+            }
+            catch (Exception E)
+            {
+
+                throw;
+            }
+
+            return grid.responde();
+        }
+
 
 
 

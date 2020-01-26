@@ -265,6 +265,7 @@
     <Content Include="Views\Renting\Index.cshtml" />
     <Content Include="Views\Inicio\Index.cshtml" />
     <Content Include="Views\Renting\generarorden.cshtml" />
+    <Content Include="Views\Renting\ViewDetailorden.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
