@@ -112,6 +112,11 @@ namespace proyecto.Areas.Admin.Controllers
 
         public ActionResult ViewDetailorden(int id)
         {
+
+            //PARA PODER TRAER EL LISTADO DE DETALLEORDEN DE ACUERDO AL ID DEL ORDEN
+
+            ViewBag.InventarioElegido = detalleorden.Listar(id);
+
             return View(orden.ObtenerVerorden(id));
         }
 
