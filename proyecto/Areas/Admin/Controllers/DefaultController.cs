@@ -49,6 +49,8 @@ namespace proyecto.Areas.Admin.Controllers
 
             var listaequiposproduccion = thisreport.GetRPT_Hardware_produccion();
 
+          
+
             return Json(listaequiposproduccion, JsonRequestBehavior.AllowGet);
 
         }

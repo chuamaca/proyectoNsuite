@@ -16,6 +16,9 @@ namespace Model
 
 
         public int hardwareprod { get; set; }
+        public int hardwareclose { get; set; }
+        public int hardwarecambio { get; set; }
+        public int warehousehw { get; set; }
 
         public virtual List<Reporting> GetRPT_Hardware_produccion()
         {
