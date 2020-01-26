@@ -393,6 +393,7 @@ PARA CARGAR INVENTARIO EN UN VISTA PARCIAL
                                         @Html.HiddenFor(x => x.idorden)
                                         @Html.TextBoxFor(x => x.generateuserorden, htmlAttributes: new { @Value = usuario.nombre, @type = "hidden" })
                                         @Html.TextBoxFor(x => x.generateempresaorden, htmlAttributes: new { @Value = usuario.razonsocial, @type = "hidden" })
+                                        @Html.HiddenFor(x => x.produccion)
                                     </div>
 
 

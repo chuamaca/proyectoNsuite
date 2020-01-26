@@ -25,9 +25,11 @@
                 for (var i = 0; i < detail.length; i++) {
 
                     $("#idprod").val(detail[i].hardwareprod);
+                    $("#sinatencion").val(detail[i].sinatencion);
                     $("#idclose").val(detail[i].hardwareclose);
                     $("#idcambio").val(detail[i].hardwarecambio);
                     $("#idalmacen").val(detail[i].warehousehw);
+               
                         
                 }
 
@@ -37,86 +39,6 @@
     }
 
 </script>
-
-
-
-@*<script>
-
-   Window.onload = function () {
-      
-        var showData = $('#show-data');
-
-        $.getJSON('/default/GetRPT_Hardware_produccion', function (data) {
-                console.log(data);
-
-                var items = data.items.map(function (item) {
-                   // return item.key + ': ' + item.value;
-                    return item.hardwareprod;
-                });
-
-                showData.empty();
-
-                if (items.length) {
-                    var content = '<li>' + items.join('</li><li>') + '</li>';
-                    var list = $('<ul />').html(content);
-                    showData.append(list);
-                }
-            });
-
-            showData.text('Loading the JSON file.');
-    
-    };
-
-</script>*@
-
-
-
-
-@*<script>
-
-
-
-
-
-    $(document).ready(function () {
-        $("#hardwareselect").change(function () {
-            $("#busquedahw").empty();
-            //DESARROLLO
-            $.getJSON('/orden/GetHardwareDetail', { idhardware: $('#hardwareselect').val() }, function (data) {
-
-                // PRODUCCION:  $.getJSON('../GetHardwareDetail', { idhardware: $('#hardwareselect').val() }, function (data) {
-                $.each(data, function () {
-
-                    ////https://thisinterestsme.com/fix-unexpected-token-o-in-json/
-                    var stringified = JSON.stringify(data);
-                    var detail = JSON.parse(stringified);
-
-                    ////https://josehernandez.es/2010/10/02/uso-json-javascript.html
-
-                    for (var i = 0; i < detail.length; i++) {
-                        $("#busquedahw").val('Detalle: ' + detail[i].seriehw +
-                            '; ' + detail[i].nmmodel +
-                            '; ' + detail[i].nmprocessor +
-                            '; ' + detail[i].mcapacity +
-                            '; ' + detail[i].capacitystorage +
-                            '; ' + detail[i].nmequipo);
-
-
-                        $("#codigontb").val(detail[i].codigontb);
-                        $("#typedevice").val(detail[i].typedevice);
- 
-                    }
-                });
-
-
-            });
-        });
-    });
-
-</script>*@
-
-
-
 
 <div class="well dark">
 
@@ -141,6 +63,10 @@
 
                             <li class="alert-info active">
                                 <a href="#"><i class="fa uk-slideshow-fade-in"></i> PRODUCCION <input id="idprod" type="text" class="input-12 text-bold text-center" disabled />   </a>
+                            </li>
+
+                            <li class="alert-danger">
+                                <a href="#"><i class="fa uk-slideshow-fade-in"></i> POR DESPACHAR <input id="sinatencion" type="text" class="input-12 text-bold text-center" disabled />   </a>
                             </li>
 
 

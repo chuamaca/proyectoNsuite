@@ -5,7 +5,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-create TRIGGER [dbo].[DetalleOrdenProduccion] ON [dbo].[DetalleOrden]
+alter TRIGGER [dbo].[DetalleOrdenProduccion] ON [dbo].[DetalleOrden]
   AFTER INSERT, update
 AS 
 BEGIN
@@ -20,7 +20,9 @@ BEGIN
 
   -- Insertar declaraciones para desencadenar aquí
 UPDATE Orden 
-  set produccion = (select(count(estadodetalleorden)) from DetalleOrden where estadodetalleorden=1 AND  Orden_ID = @idprod ) WHERE 
+ set produccion = (select(count(estadodetalleorden)) from DetalleOrden where estadodetalleorden=1 AND  Orden_ID = @idprod )
+  
+  WHERE 
 		idorden=@idprod
 
 END

@@ -20,6 +20,8 @@ namespace Model
         public int hardwarecambio { get; set; }
         public int warehousehw { get; set; }
 
+        public int sinatencion { get; set; }
+
         public virtual List<Reporting> GetRPT_Hardware_produccion()
         {
             var ctx = new ProyectoContext();
