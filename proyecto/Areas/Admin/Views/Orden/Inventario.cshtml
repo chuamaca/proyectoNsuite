@@ -67,6 +67,8 @@
 
 
 
+
+
 <script>
     window.onload = function () {
         var fecha = new Date(); //Fecha actual
@@ -91,9 +93,9 @@
     {
         @Html.HiddenFor(x => x.Orden_Id)
 
-        @Html.TextBoxFor(x => x.fregistro, new { @class = "input-12 datepicker", @type = "hidden" })
+     
 
-  
+      
 
         <div class="panel panel-primary">
             <div class="panel-body">
@@ -146,6 +148,12 @@
 
 
         <div class="row">
+
+           
+
+                      @Html.TextBoxFor(x => x.fregistro, new { @class = "input-12 datepicker", @type = "hidden" })
+
+
             <div class="form-group">
 
                 @Html.LabelFor(x => x.seriedt, new { @class = "col-sm-2 control-label pull-left" })

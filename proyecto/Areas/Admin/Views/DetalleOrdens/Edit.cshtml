@@ -72,6 +72,29 @@
                                                     @Html.ValidationMessageFor(x => x.seriedt, null, new { @class = "label label-danger" })
                                                 </div>
                                         </div>
+
+
+                                        <div class="form-group">
+
+                                            @Html.LabelFor(x => x.fregistro, new { @class = "col-sm-2 control-label pull-left" })
+                                            <div class="col-md-2">
+                                                @Html.TextBoxFor(x => x.fregistro, new { @class = "input-12", placeholder = "" })
+                                                @Html.ValidationMessageFor(x => x.fregistro, null, new { @class = "label label-danger" })
+                                            </div>
+
+                                            @Html.LabelFor(x => x.gremision, new { @class = "col-sm-2 control-label pull-left" })
+                                            <div class="col-md-2">
+                                                @Html.TextBoxFor(x => x.gremision, new { @class = "input-12", placeholder = "" })
+                                                @Html.ValidationMessageFor(x => x.gremision, null, new { @class = "label label-danger" })
+                                            </div>
+                                       
+                                   
+
+                                        </div>
+
+
+
+
                                         <hr />
 
 
@@ -158,7 +181,7 @@
                                             </div>
 
 
-                                            @Html.LabelFor(model => model.estadodetalleorden, htmlAttributes: new { @class = "col-sm-2 control-label pull-left" })
+                                            @Html.LabelFor(model => model.estadodetalleorden, htmlAttributes: new { @class = "col-sm-1 control-label pull-left" })
                                             <div class="col-md-2">
                                                 @*@Html.DropDownList("estadodetalleorden", null, htmlAttributes: new { @class = "input-12" })*@
 
@@ -186,8 +209,17 @@
                                                     }
                                                 </select>
 
+
+
                                                 @*@Html.EditorFor(model => model.estadodetalleorden, new { htmlAttributes = new { @class = "input-12" } })
             @Html.ValidationMessageFor(model => model.estadodetalleorden, "", new { @class = "text-danger" })*@
+                                            </div>
+
+
+                                            @Html.LabelFor(x => x.grecepcion, new { @class = "col-sm-1 control-label pull-left" })
+                                            <div class="col-md-2">
+                                                @Html.TextBoxFor(x => x.grecepcion, new { @class = "input-12", placeholder = "" })
+                                                @Html.ValidationMessageFor(x => x.grecepcion, null, new { @class = "label label-danger" })
                                             </div>
 
 

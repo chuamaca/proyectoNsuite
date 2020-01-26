@@ -103,7 +103,7 @@
 
                                         @Html.LabelFor(x => x.codigosuc, new { @class = "col-sm-2 control-label pull-left" })
                                         <div class="col-md-3">
-                                            @Html.TextBoxFor(x => x.codigosuc, new { @class = "input-12", placeholder = "Razon Social" })
+                                            @Html.TextBoxFor(x => x.codigosuc, new { @class = "input-12", placeholder = "Codigo Suc" })
                                             @Html.ValidationMessageFor(x => x.codigosuc, null, new { @class = "label label-danger" })
                                         </div>
 
@@ -115,7 +115,7 @@
                                         @Html.HiddenFor(x => x.idsucursal)
                                         @Html.LabelFor(x => x.nmsucursal, new { @class = "col-sm-2 control-label pull-left" })
                                         <div class="col-md-3">
-                                            @Html.TextBoxFor(x => x.nmsucursal, new { @class = "input-12", placeholder = "Razon Social" })
+                                            @Html.TextBoxFor(x => x.nmsucursal, new { @class = "input-12", placeholder = "Surcursal" })
                                             @Html.ValidationMessageFor(x => x.nmsucursal, null, new { @class = "label label-danger" })
                                         </div>
 
@@ -162,7 +162,7 @@
                                     <div class="form-group">
                                         @Html.LabelFor(x => x.observacionsuc, new { @class = "col-sm-2 control-label pull-left" })
                                         <div class="col-md-6">
-                                            @Html.TextAreaFor(x => x.observacionsuc, new { @class = "input-12", placeholder = "Ingrese su nombre" })
+                                            @Html.TextAreaFor(x => x.observacionsuc, new { @class = "input-12", placeholder = "" })
                                             @Html.ValidationMessageFor(x => x.observacionsuc, null, new { @class = "label label-danger" })
                                         </div>
                                     </div>
