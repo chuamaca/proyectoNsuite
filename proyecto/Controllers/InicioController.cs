@@ -26,7 +26,7 @@ namespace proyecto.Controllers
 
             if (rm.response)
             {
-                rm.href = Url.Content("~/Home/index");
+                rm.href = Url.Content("~/renting/index");
             }
 
             return Json(rm);

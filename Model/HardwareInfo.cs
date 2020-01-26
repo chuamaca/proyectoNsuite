@@ -30,7 +30,7 @@
         public string obshw { get; set; }
         public string sthw { get; set; }
 
-        //PROCEDIMEINTO ALMACENADO PARA HACER CONSULTA DE HARWARE DETALLE
+        //PROCEDIMEINTO ALMACENADO PARA HACER CONSULTA DE HARWARE DETALLE CON PARAMETROS
         public virtual List<HardwareInfo> GetHardwareDetail(int idhardware = 0)
         {
             var ctx = new ProyectoContext();

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 using Model;
 using proyecto.Areas.Admin.Filters;
+using Helper;
 
 
 namespace proyecto.Controllers
@@ -34,7 +35,7 @@ namespace proyecto.Controllers
         }
 
         //CRUD DE ORDEN
-        public ActionResult generarorden(int id = 0, int id_em = 3)
+        public ActionResult generarorden(int id = 0)
         {
             //para mostrar empresa
             Cascada empresasucursal = new Cascada();
@@ -109,6 +110,23 @@ namespace proyecto.Controllers
             }
 
             return Json(rm);
+        }
+
+
+        //PARA VISUALIZAR EQUIPOS EN PRODUCCION CAMBIOS ATENCIONES EN VISTA DEL CLIENTE
+        private Reporting thisreport = new Reporting();
+        public JsonResult GetRPT_Hardware_produccion_empresa( string empresa)
+        {
+            Usuario user = new Usuario();
+
+            var getemp = user.ObtenerPerfil(SessionHelper.GetUser());
+
+         var thisuser =   getemp.razonsocial.ToString();
+
+            var listaequiposproduccion = thisreport.GetRPT_Hardware_produccion_for_empresa(thisuser);
+
+            return Json(listaequiposproduccion, JsonRequestBehavior.AllowGet);
+
         }
     }
 }

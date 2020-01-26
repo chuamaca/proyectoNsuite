@@ -31,6 +31,24 @@ namespace Model
 
 
 
+        public int hardwareprodempresa { get; set; }
+        public int hardwarecloseempresa { get; set; }
+        public int hardwarecambioempresa { get; set; }
+     
+        public int sinatencionempresa { get; set; }
+
+
+        //VISTA PARA CLIENTES DE PROCESOS Y EQUIPOS ACTIVOS
+
+        public virtual List<Reporting> GetRPT_Hardware_produccion_for_empresa(string empresa)
+        {
+            var ctx = new ProyectoContext();
+            SqlParameter param1 = new SqlParameter("@empresa", empresa);
+            return ctx.Database.SqlQuery<Reporting>("RPT_Hardware_produccion_for_empresa @empresa", param1).ToList();
+        }
+
+
+
 
     }
 }

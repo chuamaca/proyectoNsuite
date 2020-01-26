@@ -363,6 +363,8 @@
                             @Html.TextBoxFor(x => x.generateuserorden, htmlAttributes: new { @Value = usuario.nombre, @type = "hidden" })
                             @Html.TextBoxFor(x => x.generateempresaorden, htmlAttributes: new { @Value = usuario.razonsocial, @type = "hidden" })
 
+                            @Html.TextBoxFor(x => x.estadoorden, htmlAttributes: new { @Value = "1", @type = "hidden" })
+
                             @Html.TextBoxFor(x => x.fsolicitudorden, new { @class = "input-12 datepicker",  @type = "hidden" })
                             @Html.TextBoxFor(x => x.fentregaorden, new { @class = "input-12 datepicker", @type = "hidden" })
                            
