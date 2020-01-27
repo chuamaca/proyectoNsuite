@@ -7,7 +7,7 @@
 
 
 
-ALTER proc RPT_Hardware_produccion
+alter proc RPT_Hardware_produccion
 AS
 select  (select count(seriehw)  from DetalleOrden where estadodetalleorden=1) AS hardwareprod, 
 (select count(seriehw)  from DetalleOrden where estadodetalleorden=0) AS hardwareclose ,

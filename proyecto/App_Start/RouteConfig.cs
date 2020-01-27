@@ -27,11 +27,7 @@ namespace proyecto
                 defaults: new { controller = "Home", action = "Index", groupname = UrlParameter.Optional }
             );
 
-            routes.MapRoute(
-                name: "Login",
-                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Login", action = "Index", groupname = UrlParameter.Optional }
-            );
+         
         }
     }
 }

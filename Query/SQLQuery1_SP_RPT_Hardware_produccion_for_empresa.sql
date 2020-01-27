@@ -1,6 +1,6 @@
 --REPORTE PARA VISTA DE CLIENTES
 
-alter proc RPT_Hardware_produccion_for_empresa
+create proc RPT_Hardware_produccion_for_empresa
 @empresa varchar(100)
 AS
 select  (select count(seriehw)  from DetalleOrden do inner join Orden o on do.Orden_Id=o.idorden 
