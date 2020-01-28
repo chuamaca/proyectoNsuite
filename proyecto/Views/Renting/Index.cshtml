@@ -8,7 +8,12 @@
 
     window.onload = function () {
         var showData = $('#show-data');
+        //DESARROLLO
         $.getJSON('/renting/GetRPT_Hardware_produccion_empresa', function (data) {
+
+
+            //PRODUCCION
+          //  $.getJSON('../renting/GetRPT_Hardware_produccion_empresa', function (data) {
 
 
             $.each(data, function () {
@@ -135,9 +140,7 @@
 
                 <div class="box box-solid">
                     <div class="box-header with-border">
-                        <h3 class="box-title"> <span class="text-bold text-sm"> RESUMEN DE ALQUILERES</span></h3>
-
-
+                        <h4 class="box-title"> <span class="text-bold text-xs"> RESUMEN DE ALQUILERES</span></h4>
                     </div>
 
 

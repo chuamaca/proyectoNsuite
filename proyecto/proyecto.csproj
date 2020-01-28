@@ -256,6 +256,7 @@
     <Content Include="Areas\Admin\Views\Orden\formatos.cshtml" />
     <Content Include="ClassDiagram1.cd" />
     <Content Include="Areas\Admin\Views\Orden\gremission.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutPageAce.cshtml" />
     <None Include="Properties\PublishProfiles\Dreims.pubxml" />
     <None Include="Properties\PublishProfiles\Operacion.pubxml" />
     <None Include="Properties\PublishProfiles\Publics.pubxml" />
@@ -266,6 +267,7 @@
     <Content Include="Views\Inicio\Index.cshtml" />
     <Content Include="Views\Renting\generarorden.cshtml" />
     <Content Include="Views\Renting\ViewDetailorden.cshtml" />
+    <Content Include="Views\Shared\_LayoutAceCli.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -275,6 +277,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\AssetsAce\css\" />
+    <Folder Include="Areas\Admin\AssetsAce\font-awesome\" />
+    <Folder Include="Areas\Admin\AssetsAce\fonts\" />
+    <Folder Include="Areas\Admin\AssetsAce\images\" />
+    <Folder Include="Areas\Admin\AssetsAce\js\" />
+    <Folder Include="Areas\Admin\AssetsAce\swf\" />
     <Folder Include="Areas\Admin\img\" />
     <Folder Include="dist\css\" />
     <Folder Include="dist\fonts\" />

@@ -4,8 +4,6 @@
 @{
     Model.Usuario usuario = new Model.Usuario().ObtenerPerfil(Helper.SessionHelper.GetUser());
     ViewBag.Title = "Solicitud de Alquiler";
-
-
 }
 
 
@@ -13,31 +11,20 @@
 
 
 <script type="text/javascript">
-
-
-
     $(document).ready(function () {
-
         var porId = document.getElementById("idorden").value
-
         var miurl;
-
         if (porId > 0) {
-
             miurl = "../Search_Empresa/";
-
         } else {
-            miurl = "../orden/Search_Empresa/";
+            miurl = "../Search_Empresa/";
         }
-
-
         $("#empresaorden").autocomplete({
             source: function (request, response) {
                 $.ajax({
                     type: "POST",
                     dataType: "JSON",
                     url: miurl,
-
                     data: { Prefix_empresa: request.term },
                     success: function (data) {
                         response($.map(data, function (item) {
@@ -48,24 +35,15 @@
                         }))
                     }
                 })
-
             }
                 ,
             messages: {
-
-
                 noResults: "No results",
                 results: function (count) {
                     return count + (count == 0 ? ' result' : ' results');
                 }
-
-
-
             }
         });
-
-
-
     })
 </script>
 
@@ -73,28 +51,20 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-
         var porId = document.getElementById("idorden").value
-
         var miurl;
-
         if (porId > 0) {
-
             miurl = "../Search_Cliente/";
-
         } else {
-            miurl = "../orden/Search_Cliente/";
+            miurl = "../Search_Cliente/";
         }
-
         $("#clienteorden").autocomplete({
             source: function (request, response) {
                 $.ajax({
                     url: miurl,
-
                     type: "POST",
                     dataType: "json",
                     data: { Prefix: request.term },
-
                     success: function (data) {
                         response($.map(data, function (item) {
                             return { label: item.nmcliente, value: item.nmcliente };
@@ -114,19 +84,13 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-
         var porId = document.getElementById("idorden").value
-
         var miurl;
-
         if (porId > 0) {
-
             miurl = "../Search_Sucursal/";
-
         } else {
-            miurl = "../orden/Search_Sucursal/";
+            miurl = "../Search_Sucursal/";
         }
-
         $("#sucursalorden").autocomplete({
             source: function (request, response) {
                 $.ajax({
@@ -134,7 +98,6 @@
                     type: "POST",
                     dataType: "json",
                     data: { Prefix_sucursal: request.term },
-
                     success: function (data) {
                         response($.map(data, function (item) {
                             return { label: item.nmsucursal, value: item.nmsucursal };
@@ -155,7 +118,6 @@
 
 
 <script>
-
     $(function () {
         var dateFormat = "",
           from = $("#fsolicitudorden")
@@ -178,9 +140,7 @@
           })
           .on("change", function () {
               from.datepicker("option", "maxDate", getDate(this));
-
           });
-
         function getDate(element) {
             var date;
             try {
@@ -188,20 +148,12 @@
             } catch (error) {
                 date = null;
             }
-
             return date;
         }
-
-
-
-
     });
-
-
 </script>
 
 <script>
-
     $(function () {
         var dateFormat = "",
           from = $("#rentinginicio")
@@ -224,9 +176,7 @@
           })
           .on("change", function () {
               from.datepicker("option", "maxDate", getDate(this));
-
           });
-
         function getDate(element) {
             var date;
             try {
@@ -234,13 +184,9 @@
             } catch (error) {
                 date = null;
             }
-
             return date;
         }
-
     });
-
-
 </script>
 
 <script>
@@ -253,7 +199,6 @@
             dia = '0' + dia; //agrega cero si el menor de 10
         if (mes < 10)
             mes = '0' + mes //agrega cero si el menor de 10
-
         document.getElementById('fsolicitudorden').value = dia + "/" + mes + "/" + ano;
         document.getElementById('fentregaorden').value = dia + 1 + "/" + mes + "/" + ano;
     }
@@ -268,14 +213,11 @@
                 allWells = $('.setup-content'),
                 allNextBtn = $('.nextBtn'),
                 allPrevBtn = $('.prevBtn');
-
         allWells.hide();
-
         navListItems.click(function (e) {
             e.preventDefault();
             var $target = $($(this).attr('href')),
                     $item = $(this);
-
             if (!$item.hasClass('disabled')) {
                 navListItems.removeClass('btn-primary').addClass('btn-default');
                 $item.addClass('btn-primary');
@@ -284,22 +226,18 @@
                 $target.find('input:eq(0)').focus();
             }
         });
-
         allPrevBtn.click(function () {
             var curStep = $(this).closest(".setup-content"),
                 curStepBtn = curStep.attr("id"),
                 prevStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().prev().children("a");
-
             prevStepWizard.removeAttr('disabled').trigger('click');
         });
-
         allNextBtn.click(function () {
             var curStep = $(this).closest(".setup-content"),
                 curStepBtn = curStep.attr("id"),
                 nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
                 curInputs = curStep.find("input[type='text'],input[type='url']"),
                 isValid = true;
-
             $(".form-group").removeClass("has-error");
             for (var i = 0; i < curInputs.length; i++) {
                 if (!curInputs[i].validity.valid) {
@@ -307,15 +245,11 @@
                     $(curInputs[i]).closest(".form-group").addClass("has-error");
                 }
             }
-
             if (isValid)
                 nextStepWizard.removeAttr('disabled').trigger('click');
         });
-
         $('div.setup-panel div a.btn-primary').trigger('click');
     });
-
-
 </script>
 
 
@@ -326,249 +260,247 @@
 
     <div class="well">
 
-            <div class="stepwizard col-md-offset-3">
-                <div class="stepwizard-row setup-panel">
-                    <div class="stepwizard-step">
-                        <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
-                        <p>PASO 1</p>
-                    </div>
-                    <div class="stepwizard-step">
-                        <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
-                        <p>PASO 2</p>
-                    </div>
-                    <div class="stepwizard-step">
-                        <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
-                        <p>PASO 3</p>
-                    </div>
+        <div class="stepwizard col-md-offset-3">
+            <div class="stepwizard-row setup-panel">
+                <div class="stepwizard-step">
+                    <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
+                    <p>PASO 1</p>
+                </div>
+                <div class="stepwizard-step">
+                    <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                    <p>PASO 2</p>
+                </div>
+                <div class="stepwizard-step">
+                    <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                    <p>PASO 3</p>
                 </div>
             </div>
+        </div>
 
 
-            <div class="row setup-content" id="step-1">
+        <div class="row setup-content" id="step-1">
 
-                <div class="col-md-12">
-                    <div class="form-horizontal">
+            <div class="col-md-12">
+                <div class="form-horizontal">
 
-                        <h2>
-                            Datos del Cliente
-                        </h2>
-                        <hr />
+                    <h2>
+                        Datos del Cliente
+                    </h2>
+                    <hr />
 
-                        <div class="form-group">
+                    <div class="form-group">
 
-                            @Html.HiddenFor(x => x.idorden)
-                            @Html.TextBoxFor(x => x.generateuserorden, htmlAttributes: new { @Value = usuario.nombre, @type = "hidden" })
-                            @Html.TextBoxFor(x => x.generateempresaorden, htmlAttributes: new { @Value = usuario.razonsocial, @type = "hidden" })
+                        @Html.HiddenFor(x => x.idorden)
+                        @Html.TextBoxFor(x => x.generateuserorden, htmlAttributes: new { @Value = usuario.nombre, @type = "hidden" })
+                        @Html.TextBoxFor(x => x.generateempresaorden, htmlAttributes: new { @Value = usuario.razonsocial, @type = "hidden" })
 
-                            @Html.TextBoxFor(x => x.estadoorden, htmlAttributes: new { @Value = "1", @type = "hidden" })
+                        @Html.TextBoxFor(x => x.estadoorden, htmlAttributes: new { @Value = "1", @type = "hidden" })
 
-                            @Html.TextBoxFor(x => x.fsolicitudorden, new { @class = "input-12 datepicker",  @type = "hidden" })
-                            @Html.TextBoxFor(x => x.fentregaorden, new { @class = "input-12 datepicker", @type = "hidden" })
-                           
-                        </div>
-
-
-                        <div class="form-group">
-
-                            @Html.LabelFor(x => x.codigoorden, new { @class = "col-sm-2 control-label pull-left" })
-                            <div class="col-md-2">
-                                @Html.TextBoxFor(x => x.codigoorden, new { @class = "input-12", placeholder = "" })
-                                @Html.ValidationMessageFor(x => x.codigoorden, null, new { @class = "label label-danger" })
-                            </div>
-
-
-                            @Html.LabelFor(x => x.empresaorden, new { @class = "col-sm-1 control-label pull-left" })
-                            <div class="col-md-3">
-
-                                @Html.EditorFor(x => x.empresaorden, new { htmlAttributes = new { @class = "input-12", placeholder = "Buscar Empresa" } })
-                                @Html.ValidationMessageFor(x => x.empresaorden, null, new { @class = "label label-danger" })
-                            </div>
-
-
-
-                            @Html.LabelFor(x => x.sucursalorden, new { @class = "col-sm-1 control-label pull-left" })
-                            <div class="col-md-3">
-                                @Html.EditorFor(x => x.sucursalorden, new { htmlAttributes = new { @class = "input-12", placeholder = "Buscar Sucursal" } })
-                                @Html.ValidationMessageFor(x => x.sucursalorden, null, new { @class = "label label-danger" })
-                            </div>
-
-
-
-                        </div>
-
-
-
-                        <div class="form-group">
-
-                            @Html.LabelFor(x => x.clienteorden, new { @class = "col-sm-2 control-label pull-left" })
-                            <div class="col-md-3">
-                                @Html.EditorFor(x => x.clienteorden, new { htmlAttributes = new { @class = "input-12", placeholder = "Buscar Cliente" } })
-                                @Html.ValidationMessageFor(x => x.clienteorden, null, new { @class = "label label-danger" })
-                            </div>
-
-                            @Html.LabelFor(x => x.contratointernoorden, new { @class = "col-sm-1 control-label pull-left" })
-                            <div class="col-md-2">
-                                @Html.EditorFor(x => x.contratointernoorden, new { htmlAttributes = new { @class = "input-12" } })
-                                @Html.ValidationMessageFor(x => x.contratointernoorden, null, new { @class = "label label-danger" })
-                            </div>
-
-
-                            @Html.LabelFor(x => x.refacturableorden, new { @class = "col-sm-1 control-label pull-left" })
-                            <div class="col-md-2">
-                                @Html.EditorFor(x => x.refacturableorden, new { htmlAttributes = new { @class = "input-12", placeholder = "SI REFACTURABLE/NO REFACTURABLE" } })
-                                @Html.ValidationMessageFor(x => x.refacturableorden, null, new { @class = "label label-danger" })
-                            </div>
-                        </div>
-
-
-                        <div class="box-comment">
-
-                           **NOTA* Ingrese cuidadosamente los datos, Cualquier duda comuniquese con el Servicio de Renting
-                        </div>
-
-
-                        <button class="btn btn-primary nextBtn btn-sm pull-right" type="button">Siguiente</button>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="row setup-content" id="step-2">
-
-                <div class="col-md-12">
-
-
-                    <div class="form-horizontal">
-
-                        <h2>
-                            Datos del Responsable
-                        </h2>
-                        <hr />
-
-                        <div class="form-group">
-
-                            @Html.LabelFor(x => x.responsableorden, new { @class = "col-sm-2 control-label pull-left" })
-                            <div class="col-md-2">
-                                @Html.TextBoxFor(x => x.responsableorden, new { @class = "input-12", placeholder = "" })
-                                @Html.ValidationMessageFor(x => x.responsableorden, null, new { @class = "label label-danger" })
-                            </div>
-
-
-                            @Html.LabelFor(x => x.telefonoresponsableorden, new { @class = "col-sm-1 control-label pull-left" })
-                            <div class="col-md-2">
-
-                                @Html.TextBoxFor(x => x.telefonoresponsableorden, new { @class = "input-12", placeholder = "" })
-                                @Html.ValidationMessageFor(x => x.telefonoresponsableorden, null, new { @class = "label label-danger" })
-                            </div>
-
-
-                            @Html.LabelFor(x => x.tipousuarioorden, new { @class = "col-sm-1 control-label pull-left" })
-                            <div class="col-md-2">
-                                @Html.TextBoxFor(x => x.tipousuarioorden, new { @class = "input-12", placeholder = "PASS-INTERNO-OTRO" })
-                                @Html.ValidationMessageFor(x => x.tipousuarioorden, null, new { @class = "label label-danger" })
-                            </div>
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            @Html.LabelFor(x => x.equipousuarioorden, new { @class = "col-sm-2 control-label pull-left" })
-                            <div class="col-md-3">
-                                @Html.TextBoxFor(x => x.equipousuarioorden, new { @class = "input-12", placeholder = "" })
-                                @Html.ValidationMessageFor(x => x.equipousuarioorden, null, new { @class = "label label-danger" })
-                            </div>
-
-                            @Html.LabelFor(x => x.telefonousuarioorden, new { @class = "col-sm-1 control-label pull-left" })
-                            <div class="col-md-2">
-                                @Html.TextBoxFor(x => x.telefonousuarioorden, new { @class = "input-12", placeholder = "" })
-                                @Html.ValidationMessageFor(x => x.telefonousuarioorden, null, new { @class = "label label-danger" })
-                            </div>
-
-
-                            @Html.LabelFor(x => x.redequipoorden, new { @class = "col-sm-1 control-label pull-left" })
-                            <div class="col-md-2">
-                                @Html.TextBoxFor(x => x.redequipoorden, new { @class = "input-12", placeholder = "" })
-                                @Html.ValidationMessageFor(x => x.redequipoorden, null, new { @class = "label label-danger" })
-                            </div>
-
-                        </div>
-
-
-                        <div class="form-group">
-                            @Html.LabelFor(x => x.ubicacionequipoorden, new { @class = "col-sm-2 control-label pull-left" })
-                            <div class="col-md-6">
-                                @Html.TextBoxFor(x => x.ubicacionequipoorden, new { @class = "input-12", placeholder = "" })
-                                @Html.ValidationMessageFor(x => x.ubicacionequipoorden, null, new { @class = "label label-danger" })
-                            </div>
-                        </div>
-
-                        <button class="btn btn-primary prevBtn btn-sm pull-left" type="button">Anterior</button>
-                        <button class="btn btn-primary nextBtn btn-sm pull-right" type="button">Siguiente</button>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="row setup-content" id="step-3">
-                <div class="col-md-12">
-                    <div class="form-horizontal">
-
-                        <h2>
-                            Datos de Equipo A Solicitar
-                        </h2>
-                        <hr />
-                        <div class="form-group">
-                            @Html.LabelFor(x => x.rqservicio, new { @class = "col-sm-2 control-label pull-left" })
-                            <div class="col-md-3">
-                                @Html.TextBoxFor(x => x.rqservicio, new { @class = "input-12", placeholder = "" })
-                                @Html.ValidationMessageFor(x => x.rqservicio, null, new { @class = "label label-danger" })
-                            </div>
-
-                            @Html.LabelFor(x => x.ordenservicio, new { @class = "col-sm-2 control-label pull-left" })
-                            <div class="col-md-3">
-                                @Html.TextBoxFor(x => x.ordenservicio, new { @class = "input-12", placeholder = "" })
-                                @Html.ValidationMessageFor(x => x.ordenservicio, null, new { @class = "label label-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(x => x.hardwaredevice, new { @class = "col-sm-2 control-label pull-left" })
-                            <div class="col-md-3">
-                                @Html.TextBoxFor(x => x.hardwaredevice, new { @class = "input-12", placeholder = "NOTEBOOK/DESKTOP/IMPRESORA" })
-                                @Html.ValidationMessageFor(x => x.hardwaredevice, null, new { @class = "label label-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(x => x.cantidadhardware, new { @class = "col-sm-2 control-label pull-left" })
-                            <div class="col-md-3">
-                                @Html.TextBoxFor(x => x.cantidadhardware, new { @class = "input-12", placeholder = "" })
-                                @Html.ValidationMessageFor(x => x.cantidadhardware, null, new { @class = "label label-danger" })
-                            </div>
-
-                            @Html.LabelFor(x => x.tipohardware, new { @class = "col-sm-2 control-label pull-left" })
-                            <div class="col-md-3">
-                                @Html.TextBoxFor(x => x.tipohardware, new { @class = "input-12", placeholder = "" })
-                                @Html.ValidationMessageFor(x => x.tipohardware, null, new { @class = "label label-danger" })
-                            </div>
-                        </div>
-
-                        <button class="btn btn-primary prevBtn btn-sm pull-left" type="button">Anterior</button>
-
-                        <button type="submit" data-ajax="true" class="btn btn-success btn-sm pull-right">
-                            <span class="spinner-border spinner-border-sm mr-2"></span>
-                            Guardar
-                        </button>
+                        @Html.TextBoxFor(x => x.fsolicitudorden, new { @class = "input-12 datepicker", @type = "hidden" })
+                        @Html.TextBoxFor(x => x.fentregaorden, new { @class = "input-12 datepicker", @type = "hidden" })
 
                     </div>
-                </div>
 
+
+                    <div class="form-group">
+
+                        @Html.LabelFor(x => x.codigoorden, new { @class = "col-sm-2 control-label pull-left" })
+                        <div class="col-md-2">
+                            @Html.TextBoxFor(x => x.codigoorden, new { @class = "input-12", placeholder = "" })
+                            @Html.ValidationMessageFor(x => x.codigoorden, null, new { @class = "label label-danger" })
+                        </div>
+
+
+                        @Html.LabelFor(x => x.empresaorden, new { @class = "col-sm-1 control-label pull-left" })
+                        <div class="col-md-3">
+
+                            @Html.EditorFor(x => x.empresaorden, new { htmlAttributes = new { @class = "input-12", placeholder = "Buscar Empresa" } })
+                            @Html.ValidationMessageFor(x => x.empresaorden, null, new { @class = "label label-danger" })
+                        </div>
+
+
+
+                        @Html.LabelFor(x => x.sucursalorden, new { @class = "col-sm-1 control-label pull-left" })
+                        <div class="col-md-3">
+                            @Html.EditorFor(x => x.sucursalorden, new { htmlAttributes = new { @class = "input-12", placeholder = "Buscar Sucursal" } })
+                            @Html.ValidationMessageFor(x => x.sucursalorden, null, new { @class = "label label-danger" })
+                        </div>
+
+
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        @Html.LabelFor(x => x.clienteorden, new { @class = "col-sm-2 control-label pull-left" })
+                        <div class="col-md-3">
+                            @Html.EditorFor(x => x.clienteorden, new { htmlAttributes = new { @class = "input-12", placeholder = "Buscar Cliente" } })
+                            @Html.ValidationMessageFor(x => x.clienteorden, null, new { @class = "label label-danger" })
+                        </div>
+
+                        @Html.LabelFor(x => x.contratointernoorden, new { @class = "col-sm-1 control-label pull-left" })
+                        <div class="col-md-2">
+                            @Html.EditorFor(x => x.contratointernoorden, new { htmlAttributes = new { @class = "input-12" } })
+                            @Html.ValidationMessageFor(x => x.contratointernoorden, null, new { @class = "label label-danger" })
+                        </div>
+
+
+                        @Html.LabelFor(x => x.refacturableorden, new { @class = "col-sm-1 control-label pull-left" })
+                        <div class="col-md-2">
+                            @Html.EditorFor(x => x.refacturableorden, new { htmlAttributes = new { @class = "input-12", placeholder = "SI REFACTURABLE/NO REFACTURABLE" } })
+                            @Html.ValidationMessageFor(x => x.refacturableorden, null, new { @class = "label label-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="box-comment">
+
+                        **NOTA* Ingrese cuidadosamente los datos, Cualquier duda comuniquese con el Servicio de Renting
+                    </div>
+
+
+                    <button class="btn btn-primary nextBtn btn-sm pull-right" type="button">Siguiente</button>
+                </div>
             </div>
 
         </div>
- 
+
+        <div class="row setup-content" id="step-2">
+
+            <div class="col-md-12">
+
+
+                <div class="form-horizontal">
+
+                    <h2>
+                        Datos del Responsable
+                    </h2>
+                    <hr />
+
+                    <div class="form-group">
+
+                        @Html.LabelFor(x => x.responsableorden, new { @class = "col-sm-2 control-label pull-left" })
+                        <div class="col-md-2">
+                            @Html.TextBoxFor(x => x.responsableorden, new { @class = "input-12", placeholder = "" })
+                            @Html.ValidationMessageFor(x => x.responsableorden, null, new { @class = "label label-danger" })
+                        </div>
+
+
+                        @Html.LabelFor(x => x.telefonoresponsableorden, new { @class = "col-sm-1 control-label pull-left" })
+                        <div class="col-md-2">
+
+                            @Html.TextBoxFor(x => x.telefonoresponsableorden, new { @class = "input-12", placeholder = "" })
+                            @Html.ValidationMessageFor(x => x.telefonoresponsableorden, null, new { @class = "label label-danger" })
+                        </div>
+
+
+                        @Html.LabelFor(x => x.tipousuarioorden, new { @class = "col-sm-1 control-label pull-left" })
+                        <div class="col-md-2">
+                            @Html.TextBoxFor(x => x.tipousuarioorden, new { @class = "input-12", placeholder = "PASS-INTERNO-OTRO" })
+                            @Html.ValidationMessageFor(x => x.tipousuarioorden, null, new { @class = "label label-danger" })
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        @Html.LabelFor(x => x.equipousuarioorden, new { @class = "col-sm-2 control-label pull-left" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(x => x.equipousuarioorden, new { @class = "input-12", placeholder = "" })
+                            @Html.ValidationMessageFor(x => x.equipousuarioorden, null, new { @class = "label label-danger" })
+                        </div>
+
+                        @Html.LabelFor(x => x.telefonousuarioorden, new { @class = "col-sm-1 control-label pull-left" })
+                        <div class="col-md-2">
+                            @Html.TextBoxFor(x => x.telefonousuarioorden, new { @class = "input-12", placeholder = "" })
+                            @Html.ValidationMessageFor(x => x.telefonousuarioorden, null, new { @class = "label label-danger" })
+                        </div>
+
+
+                        @Html.LabelFor(x => x.redequipoorden, new { @class = "col-sm-1 control-label pull-left" })
+                        <div class="col-md-2">
+                            @Html.TextBoxFor(x => x.redequipoorden, new { @class = "input-12", placeholder = "" })
+                            @Html.ValidationMessageFor(x => x.redequipoorden, null, new { @class = "label label-danger" })
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.ubicacionequipoorden, new { @class = "col-sm-2 control-label pull-left" })
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(x => x.ubicacionequipoorden, new { @class = "input-12", placeholder = "" })
+                            @Html.ValidationMessageFor(x => x.ubicacionequipoorden, null, new { @class = "label label-danger" })
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary prevBtn btn-sm pull-left" type="button">Anterior</button>
+                    <button class="btn btn-primary nextBtn btn-sm pull-right" type="button">Siguiente</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row setup-content" id="step-3">
+            <div class="col-md-12">
+                <div class="form-horizontal">
+
+                    <h2>
+                        Datos de Equipo A Solicitar
+                    </h2>
+                    <hr />
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.rqservicio, new { @class = "col-sm-2 control-label pull-left" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(x => x.rqservicio, new { @class = "input-12", placeholder = "" })
+                            @Html.ValidationMessageFor(x => x.rqservicio, null, new { @class = "label label-danger" })
+                        </div>
+
+                        @Html.LabelFor(x => x.ordenservicio, new { @class = "col-sm-2 control-label pull-left" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(x => x.ordenservicio, new { @class = "input-12", placeholder = "" })
+                            @Html.ValidationMessageFor(x => x.ordenservicio, null, new { @class = "label label-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.hardwaredevice, new { @class = "col-sm-2 control-label pull-left" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(x => x.hardwaredevice, new { @class = "input-12", placeholder = "NOTEBOOK/DESKTOP/IMPRESORA" })
+                            @Html.ValidationMessageFor(x => x.hardwaredevice, null, new { @class = "label label-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.cantidadhardware, new { @class = "col-sm-2 control-label pull-left" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(x => x.cantidadhardware, new { @class = "input-12", placeholder = "" })
+                            @Html.ValidationMessageFor(x => x.cantidadhardware, null, new { @class = "label label-danger" })
+                        </div>
+
+                        @Html.LabelFor(x => x.tipohardware, new { @class = "col-sm-2 control-label pull-left" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(x => x.tipohardware, new { @class = "input-12", placeholder = "" })
+                            @Html.ValidationMessageFor(x => x.tipohardware, null, new { @class = "label label-danger" })
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary prevBtn btn-sm pull-left" type="button">Anterior</button>
+
+                    <button type="submit" data-ajax="true" class="btn btn-success btn-sm pull-right">
+                        <span class="spinner-border spinner-border-sm mr-2"></span>
+                        Guardar
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
 
 }
-
-

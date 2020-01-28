@@ -1,8 +1,8 @@
 ﻿body {
-    margin-top:40px;
+    margin-top: 0px;
 }
 .stepwizard-step p {
-    margin-top: 10px;
+    margin-top: 40px;
 }
 .stepwizard-row {
     display: table-row;
@@ -21,7 +21,7 @@
     bottom: 0;
     position: absolute;
     content: " ";
-    width: 100%;
+    width: 80%;
     height: 1px;
     background-color: #ccc;
     z-order: 0;
